@@ -12,6 +12,10 @@ const MongoClient = require('mongodb').MongoClient;
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.sjfoa.mongodb.net/${process.env.DB_DATABASE}?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, { useNewUrlParser: true , useUnifiedTopology : true});
 
+app.get('/', (req,res) =>{
+  res.send('welcome to ema-john-server')
+})
+
 client.connect(err => {
   const products = client.db(`${process.env.DB_DATABASE}`).collection(`${process.env.DB_COLLECTION}`);
   const ordersCollection = client.db(`${process.env.DB_DATABASE}`).collection('orders');
